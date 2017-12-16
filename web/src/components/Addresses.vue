@@ -33,21 +33,21 @@
 
 
         <el-row class="address-divider" v-for="(address, index) in this.form.addresses"
-                :gutter="16"
+                :gutter="26"
                 type="flex"
-                justify="space-between" align="middle">
+                justify="space-around" align="middle">
 
 
             <el-col class="resource-separators" type="flex" v-if="!form.addresses[index].edit">
-                <el-row class="title-padding" type="flex" justify="middle" align="middle">
+                <el-row  class="title-padding" type="flex" justify="middle" align="middle">
 
                     <el-col :span="4" style="text-align: left">
 
-                        <a target="_blank" :href="'https://maps.google.com/?q=term' + address.street + ' ' + address.street_2 + ' ' + address.city + ' ' + address.state + ' ' + address.zip"><el-tag>map</el-tag></a>
+                        <a target="_blank" :href="'https://maps.google.com/?q=' + address.street + ' ' + address.street_2 + ' ' + address.city + ' ' + address.state + ' ' + address.zip"><el-tag>map</el-tag></a>
 
                     </el-col>
-                    <el-col   v-if="!form.addresses[index].edit">
-                        <el-row type="flex" justify="middle" align="middle">
+                    <el-col :xs="18" :sm="18" v-if="!form.addresses[index].edit">
+                        <el-row  type="flex" justify="middle" align="middle">
 
                             <el-col style="text-align: left">
 

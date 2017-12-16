@@ -25,21 +25,21 @@
             </el-row>
 
             <el-row :gutter="16" justify="space-between">
-              <el-col :span="8">
+              <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
                 <el-form-item label="First Name"
                               :rules="{required: true, message: 'Please Enter a First Name', trigger: 'blur'}"
                               prop="first_name">
                   <el-input placeholder="First Name" v-model="person.first_name"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
+              <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
                 <el-form-item label="Last Name"
                               :rules="{required: true, message: 'Please Enter a Last Name', trigger: 'blur'}"
                               prop="last_name">
                   <el-input placeholder="Last Name" v-model="person.last_name"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
+              <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
                 <div class="">
                   <el-form-item label="Birthday"
                                 :rules="{ pattern:/^\d{4}-\d{2}-\d{2}$/, required: true, message: 'Please add a birthday', trigger: 'blur'}"
@@ -85,7 +85,7 @@
 
 
 
-            <el-col :span="12">
+            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
 
 
               <el-form-item label="Street"
@@ -100,7 +100,7 @@
 
 
             </el-col>
-            <el-col :span="12">
+            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
 
 
               <el-form-item label="City"
@@ -111,7 +111,7 @@
 
 
               <el-row :gutter="8" justify="space-between">
-                <el-col :span="12">
+                <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
 
 
                   <el-form-item label="State"
@@ -124,7 +124,7 @@
 
 
                 </el-col>
-                <el-col :span="12">
+                <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
 
 
                   <el-form-item label="Zip Code"
@@ -142,10 +142,10 @@
 
 
           <el-row type="flex" class="section_heading">
-            <el-col :span="6" style="text-align: left">
+            <el-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6" style="text-align: left">
               <div>Phone Numbers</div>
             </el-col>
-            <el-col :span="18" style="text-align: right">
+            <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" style="text-align: right">
               <el-tooltip class="item" effect="light" content="Add Phone Number" placement="top-start">
                 <el-button class="button-pad" size="mini" type="success" icon="el-icon-plus"
                            @click="addPhoneNumber"></el-button>
@@ -155,7 +155,7 @@
 
 
           <el-row v-for="(phone, index) in person.phone_numbers" :gutter="16" justify="space-between">
-            <el-col :span="4">
+            <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4">
               <el-form-item label="Type"
                             :rules="{required: true, message: 'Please Enter a Phone Type', trigger: 'blur'}"
                             :prop="'phone_numbers.' + index + '.type'">
@@ -166,7 +166,7 @@
               </el-select>
                 </el-form-item>
             </el-col>
-            <el-col :span="20">
+            <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="20">
               <el-form-item label="Number"
                             :rules="{required: true, pattern:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im, message: 'Please Enter a Valid Phone Number', trigger: 'blur'}"
                             :prop="'phone_numbers.' + index + '.number'">
@@ -177,10 +177,10 @@
 
 
           <el-row type="flex" class="section_heading">
-            <el-col :span="6" style="text-align: left">
+            <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8" style="text-align: left">
               <div>Emails</div>
             </el-col>
-            <el-col :span="18" style="text-align: right">
+            <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" style="text-align: right">
               <el-tooltip class="item" effect="light" content="Add Email" placement="top-start">
                 <el-button class="button-pad" size="mini" type="success" icon="el-icon-plus"
                            @click="addEmail"></el-button>
@@ -213,7 +213,6 @@
 
 <script type="text/babel">
   import axios from 'axios'
-  const api_url = 'http://sf.jawn.it/api/'
   export default {
     name: 'create-contact',
     data () {
@@ -249,7 +248,7 @@
     },
     methods: {
       createResource(resource) {
-        axios.post(api_url + resource + "/", this.person)
+        axios.post(resource + "/", this.person)
           .then(response => {
             this.$router.push({path: '/'})
         this.$message({

@@ -42,7 +42,7 @@
 
 
             <el-col class="resource-separators" type="flex" v-if="!form.emails[index].edit">
-                <el-row class="title-padding" type="flex" justify="middle" align="middle">
+                <el-row :gutter="56" class="title-padding" type="flex" justify="middle" align="middle">
 
                     <el-col :span="4" style="text-align: left">
 

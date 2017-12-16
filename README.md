@@ -22,7 +22,8 @@ docker-compose up -d
 # in your /etc/hosts file add the line
 0.0.0.0 any.jawn.it
 
-
+if you encounter an error when you first fire up the app, you may need to sync your newly created database:
+docker exec -it servicefusion_api_1 ./manage.py migrate
 
 ```
 Point your browser to http://any.jawn.it

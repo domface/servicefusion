@@ -14,7 +14,6 @@
 <script type="text/babel">
     import axios from 'axios'
     import CreateContact from './CreateContact.vue'
-    const api_url = 'http://sf.jawn.it/api/'
     import fab from 'vue-fab'
 
     export default {
@@ -40,7 +39,7 @@
             createResource(resource) {
                 axios({
                     method: 'post',
-                    url: api_url + resource + '/',
+                    url: resource + '/',
                     data: {
                         firstName: 'Fred',
                         lastName: 'Flintstone'

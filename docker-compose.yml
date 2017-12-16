@@ -1,6 +1,13 @@
 version: '3'
 services:
 
+  db:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_PASSWORD=carbonfiber
+      - POSTGRES_USER=sfusion
+    volumes:
+      - db-data:/var/lib/postgresql
 
   api:
     build: ./api
@@ -19,6 +26,5 @@ services:
       - api
 
 
-
-
-
+volumes:
+  db-data:

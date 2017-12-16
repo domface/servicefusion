@@ -4,7 +4,7 @@
             <el-card class="box-card" style="height: 94vh; overflow: scroll">
 
                 <div slot="header" class="clearfix">
-                    <el-button class="danger" style="float: left; padding: 8px 7px" @click="deleteContact(person.id)"
+                    <el-button class="danger" style="float: right; padding: 8px 7px" @click="deleteContact(person.id)"
                                type="text"
                                icon="el-icon-delete">Delete Contact
                     </el-button>
@@ -16,29 +16,7 @@
                     <div class="text item">
 
                         <el-row>
-                            <el-col :span="24" style="text-align: right">
-                                <el-tooltip class="item" effect="light" content="Edit Info" placement="left-start">
-                                    <el-button v-if="!edit.info"
-                                               class="button-pad"
-                                               size="medium"
-                                               type="text"
-                                               icon="el-icon-edit"
-                                               @click="editInfo"></el-button>
 
-                                </el-tooltip>
-                                <el-button-group v-if="edit.info">
-                                    <el-button class="button-pad danger"
-                                               type="text"
-                                               icon="el-icon-error"
-                                               @click="editInfo"
-                                    ></el-button>
-                                    <el-button type="text"
-                                               class="button-pad success"
-                                               icon="el-icon-success"
-                                               @click="update('person', person)"></el-button>
-
-                                </el-button-group>
-                            </el-col>
                         </el-row>
 
                         <div v-if="!edit.info">
@@ -50,6 +28,29 @@
                                 </el-col>
                                 <el-col style="text-align: left">
                                     <h2>{{ person.first_name }} {{ person.last_name }}</h2>
+                                </el-col>
+                                <el-col :span="4" style="text-align: right">
+                                    <el-tooltip class="item" effect="light" content="Edit Info" placement="left-start">
+                                        <el-button v-if="!edit.info"
+                                                   class="button-pad"
+                                                   size="medium"
+                                                   type="text"
+                                                   icon="el-icon-edit"
+                                                   @click="editInfo"></el-button>
+
+                                    </el-tooltip>
+                                    <el-button-group v-if="edit.info">
+                                        <el-button class="button-pad danger"
+                                                   type="text"
+                                                   icon="el-icon-error"
+                                                   @click="editInfo"
+                                        ></el-button>
+                                        <el-button type="text"
+                                                   class="button-pad success"
+                                                   icon="el-icon-success"
+                                                   @click="update('person', person)"></el-button>
+
+                                    </el-button-group>
                                 </el-col>
                             </el-row>
                             <el-row  type="flex" justify="start" align="middle">
@@ -63,6 +64,7 @@
                                         {{ person.date_of_birth | moment("MMMM Do YYYY")}}
                                     </div>
                                 </el-col>
+                                <el-col :span="4" style="text-align: right"></el-col>
                             </el-row>
 
 
@@ -144,7 +146,6 @@
     import Addresses from './Addresses.vue'
     import PhoneNumbers from './PhoneNumbers.vue'
     import Emails from './Emails.vue'
-    const api_url = 'http://sf.jawn.it/api/';
 
     export default {
         name: 'contact-card',
@@ -290,12 +291,12 @@
 
 
             createResource(resource, data) {
-                return axios.post(api_url + resource + "/", data)
+                return axios.post(resource + "/", data)
 
 
             },
             updateResource(resource, data) {
-                return axios.patch(api_url + resource + '/' + data.id.toString() + '/', data)
+                return axios.patch(resource + '/' + data.id.toString() + '/', data)
 
             },
             deleteContact(id) {
@@ -320,14 +321,14 @@
 
 
             getResource(resource, id) {
-                return axios.get(api_url + resource + '/' + id.toString() + '/')
+                return axios.get(resource + '/' + id.toString() + '/')
             },
 
 
             deleteResource(resource, id) {
                 axios({
                     method: 'delete',
-                    url: api_url + resource + "/" + id.toString() + "/"
+                    url: resource + "/" + id.toString() + "/"
                 })
                         .then(response => {
                             if (resource === 'people') {
@@ -448,8 +449,10 @@
         color: #67c23a;
     }
 
-    .title-padding {
-        padding-left: 5vw;
+    @media screen and (min-width: 650px) {
+        .title-padding {
+            padding-left: 5vw;
+        }
     }
 
     .caption {

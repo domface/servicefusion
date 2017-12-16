@@ -71,9 +71,11 @@
 
 <script type="text/babel">
     import axios from 'axios'
-    const api_url = 'http://sf.jawn.it/api/';
     import Slideout from 'vue-slideout'
     import 'element-ui/lib/theme-chalk/display.css'
+
+    axios.defaults.baseURL = document.referrer + 'api/';
+
 
     export default {
         name: 'index',
@@ -138,9 +140,9 @@
             },
             getResources(resource, query) {
                 if (query) {
-                    return axios.get(api_url + resource + '?qt=' + query)
+                    return axios.get(resource + '?qt=' + query)
                 }
-                return axios.get(api_url + resource)
+                return axios.get(resource)
 
             },
             goToNewContact(){
